@@ -9,6 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 
 /**
+ * LinkedHashMap其本质是一个没有锁的简单lru实现
  * http://flychao88.iteye.com/blog/1977653
  */
 public class LRULinkHashMap<K, V> extends LinkedHashMap<K, V> {

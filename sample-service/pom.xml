@@ -34,18 +34,6 @@
 			<version>${spring.version}</version>
 		</dependency>
 
-		<!-- httpclient -->
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.2.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpmime</artifactId>
-			<version>4.2.1</version>
-		</dependency>
-
 		<!-- utils -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -72,6 +60,12 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.1</version>
 		</dependency>
+		<!-- netty -->
+		<dependency>
+	    	<groupId>io.netty</groupId>
+	    	<artifactId>netty-all</artifactId>
+	    	<version>5.0.0.Alpha2</version>
+	    </dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-exec</artifactId>
