@@ -24,7 +24,8 @@
 
 	<modules>
 		<module>sample-common</module>
-		<module>sample-display</module>
+		<module>sample-service</module>
+		<module>sample-show-case</module>
 	</modules>
 
 	<dependencies>
