@@ -1,6 +1,5 @@
 package com.yang.clone;
 
-import com.yang.serialize.Person2;
 
 
 public class Person implements Cloneable{

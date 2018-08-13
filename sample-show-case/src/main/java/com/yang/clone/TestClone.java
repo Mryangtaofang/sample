@@ -2,8 +2,6 @@ package com.yang.clone;
 
 import org.junit.Test;
 
-import com.yang.serialize.Person2;
-
 public class TestClone {
 
 	@Test

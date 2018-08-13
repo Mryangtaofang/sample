@@ -1,4 +1,4 @@
-package com.yang.serialize;
+package com.yang.clone;
 
 import java.io.Externalizable;
 import java.io.IOException;

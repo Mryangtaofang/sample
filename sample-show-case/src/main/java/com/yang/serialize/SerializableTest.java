@@ -8,6 +8,8 @@ import java.io.ObjectOutputStream;
 
 import org.junit.Test;
 
+import com.yang.clone.Person2;
+
 public class SerializableTest {
 
 	@Test
