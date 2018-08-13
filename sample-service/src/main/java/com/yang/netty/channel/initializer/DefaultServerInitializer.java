@@ -3,16 +3,16 @@ package com.yang.netty.channel.initializer;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 
-import com.yang.netty.client.NettyClientHandler;
+import com.yang.netty.server.NettyServerHandler;
 
 /**
  * 无解码器的Handler
  * @author yangyaming
  */
-public class DefaultChannelInitializer extends ChannelInitializer<SocketChannel>{
+public class DefaultServerInitializer extends ChannelInitializer<SocketChannel>{
 
 	@Override
 	protected void initChannel(SocketChannel channel) throws Exception {
-		channel.pipeline().addLast(new NettyClientHandler());
+		channel.pipeline().addLast(new NettyServerHandler());
 	}
 }

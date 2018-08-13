@@ -18,11 +18,6 @@ public class SimpleServerHandler extends ChannelHandlerAdapter{
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 logger.info("channel read .......");
-
-//		byte[] bytes = readFromByteBuf((ByteBuf)msg);
-//		String body = new String(bytes,"UTF-8");
-//		body = body.substring(0,bytes.length - separator.length());
-		
 		String body = (String)msg;
 logger.info("读取到的消息为：" + body); 
 
@@ -46,11 +41,4 @@ logger.info("写出去数据为：" + currentTime);
 		logger.info("exception...........");
 		ctx.close();
 	}
-	
-	private byte[] readFromByteBuf(ByteBuf buf){
-		byte[] bytes = new byte[buf.readableBytes()];
-		buf.readBytes(bytes);
-		return bytes;
-	}
-	
 }

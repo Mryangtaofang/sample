@@ -30,7 +30,7 @@ public class NettyClient {
 			bootstrap.group(group)
 					 .channel(NioSocketChannel.class)
 					 .option(ChannelOption.TCP_NODELAY, true)
-					 .handler(factory.create());
+					 .handler(factory.clientInitializer());
 			
 			ChannelFuture channelFuture = bootstrap.connect(hostName,port).sync();
 			channelFuture.channel().closeFuture().sync();
