@@ -1,4 +1,4 @@
-package com.yang.netty.nio.server;
+package com.yang.netty.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -8,8 +8,27 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.LineBasedFrameDecoder;
+import io.netty.handler.codec.string.StringDecoder;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.yang.netty.client.NettyClientHandler;
+import com.yang.netty.factory.initializer.ChannelInitializerFactory;
 
 public class NettyServer {
+	protected static final Logger logger = LoggerFactory.getLogger(NettyClientHandler.class);
+	
+	private ChannelInitializerFactory factory;
+	
+	public NettyServer(){
+		factory = new ChannelInitializerFactory();
+	}
+	
+	public NettyServer(ChannelInitializerFactory factory){
+		this.factory =  factory;
+	}
 	
 	public void bind(int port){
 		EventLoopGroup bossGroup = new NioEventLoopGroup();
@@ -20,12 +39,18 @@ public class NettyServer {
 		bootstrap.group(bossGroup,workerGroup)
 				 .channel(NioServerSocketChannel.class)
 				 .option(ChannelOption.SO_BACKLOG, 1024)
-				 .childHandler(new ChildChannelHandler());
-			System.out.println("server start");
+				 .childHandler(factory.create());
+		
+		logger.info("server start");
+		
 			ChannelFuture channelFuture = bootstrap.bind(port).sync();
-System.out.println("server is listening");
+			
+		logger.info("server is listening");
+		
 			channelFuture.channel().closeFuture().sync();
-			System.out.println("server stop");
+			
+		logger.info("server stop");
+		
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}finally{
@@ -38,6 +63,8 @@ System.out.println("server is listening");
 
 		@Override
 		protected void initChannel(SocketChannel channel) throws Exception {
+			channel.pipeline().addLast(new LineBasedFrameDecoder(1024));
+			channel.pipeline().addLast(new StringDecoder());
 			channel.pipeline().addLast(new NettyServerHandler());
 		}
 

@@ -1,6 +1,7 @@
 package com.yang.netty.nio;
 
-import com.yang.netty.nio.server.NettyServer;
+import com.yang.netty.server.NettyServer;
+
 
 public class Server {
 
