@@ -1,4 +1,4 @@
-package com.yang.netty.server;
+package com.yang.netty.server.handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -10,19 +10,15 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class NettyServerHandler extends ChannelHandlerAdapter{
-	protected static final Logger logger = LoggerFactory.getLogger(NettyServerHandler.class);
+public class SimpleServerHandler extends ChannelHandlerAdapter{
+	protected static final Logger logger = LoggerFactory.getLogger(SimpleServerHandler.class);
 	
 	private  static final String separator = System.getProperty("line.separator");
 	
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 logger.info("channel read .......");
-
-		byte[] bytes = readFromByteBuf((ByteBuf)msg);
-		String body = new String(bytes,"UTF-8");
-		body = body.substring(0,bytes.length - separator.length());
-		
+		String body = (String)msg;
 logger.info("读取到的消息为：" + body); 
 
 		String currentTime = "QUERY TIME ORDER".equals(body) ? new Date(System.currentTimeMillis()).toString() : "BAD ORDER";
@@ -45,11 +41,4 @@ logger.info("写出去数据为：" + currentTime);
 		logger.info("exception...........");
 		ctx.close();
 	}
-	
-	private byte[] readFromByteBuf(ByteBuf buf){
-		byte[] bytes = new byte[buf.readableBytes()];
-		buf.readBytes(bytes);
-		return bytes;
-	}
-	
 }

@@ -5,7 +5,7 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 
-import com.yang.netty.client.SimpleClientHandler;
+import com.yang.netty.client.handler.SimpleClientHandler;
 
 /**
  * 换行分隔符解码器

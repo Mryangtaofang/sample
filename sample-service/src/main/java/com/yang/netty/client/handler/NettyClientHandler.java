@@ -1,4 +1,4 @@
-package com.yang.netty.client;
+package com.yang.netty.client.handler;
 
 
 import io.netty.buffer.ByteBuf;

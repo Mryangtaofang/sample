@@ -3,7 +3,7 @@ package com.yang.netty.channel.initializer;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 
-import com.yang.netty.client.NettyClientHandler;
+import com.yang.netty.client.handler.NettyClientHandler;
 
 /**
  * 无解码器的Handler
