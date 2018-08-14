@@ -3,12 +3,12 @@
 
 package com.yang.netty.protobuf;
 
-public final class SubscribeResp {
-  private SubscribeResp() {}
+public final class SubscribeRespProto {
+  private SubscribeRespProto() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface SubscribeReqOrBuilder
+  public interface SubscribeRespOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required int32 subReqID = 1;
@@ -31,45 +31,40 @@ public final class SubscribeResp {
      */
     int getRespCode();
 
-    // repeated string desc = 3;
+    // required string desc = 3;
     /**
-     * <code>repeated string desc = 3;</code>
+     * <code>required string desc = 3;</code>
      */
-    java.util.List<java.lang.String>
-    getDescList();
+    boolean hasDesc();
     /**
-     * <code>repeated string desc = 3;</code>
+     * <code>required string desc = 3;</code>
      */
-    int getDescCount();
+    java.lang.String getDesc();
     /**
-     * <code>repeated string desc = 3;</code>
-     */
-    java.lang.String getDesc(int index);
-    /**
-     * <code>repeated string desc = 3;</code>
+     * <code>required string desc = 3;</code>
      */
     com.google.protobuf.ByteString
-        getDescBytes(int index);
+        getDescBytes();
   }
   /**
-   * Protobuf type {@code netty.SubscribeReq}
+   * Protobuf type {@code netty.SubscribeResp}
    */
-  public static final class SubscribeReq extends
+  public static final class SubscribeResp extends
       com.google.protobuf.GeneratedMessage
-      implements SubscribeReqOrBuilder {
-    // Use SubscribeReq.newBuilder() to construct.
-    private SubscribeReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements SubscribeRespOrBuilder {
+    // Use SubscribeResp.newBuilder() to construct.
+    private SubscribeResp(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private SubscribeReq(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private SubscribeResp(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final SubscribeReq defaultInstance;
-    public static SubscribeReq getDefaultInstance() {
+    private static final SubscribeResp defaultInstance;
+    public static SubscribeResp getDefaultInstance() {
       return defaultInstance;
     }
 
-    public SubscribeReq getDefaultInstanceForType() {
+    public SubscribeResp getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -79,7 +74,7 @@ public final class SubscribeResp {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private SubscribeReq(
+    private SubscribeResp(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -113,11 +108,8 @@ public final class SubscribeResp {
               break;
             }
             case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                desc_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000004;
-              }
-              desc_.add(input.readBytes());
+              bitField0_ |= 0x00000004;
+              desc_ = input.readBytes();
               break;
             }
           }
@@ -128,37 +120,34 @@ public final class SubscribeResp {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-          desc_ = new com.google.protobuf.UnmodifiableLazyStringList(desc_);
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.yang.netty.protobuf.SubscribeResp.internal_static_netty_SubscribeReq_descriptor;
+      return com.yang.netty.protobuf.SubscribeRespProto.internal_static_netty_SubscribeResp_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.yang.netty.protobuf.SubscribeResp.internal_static_netty_SubscribeReq_fieldAccessorTable
+      return com.yang.netty.protobuf.SubscribeRespProto.internal_static_netty_SubscribeResp_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.yang.netty.protobuf.SubscribeResp.SubscribeReq.class, com.yang.netty.protobuf.SubscribeResp.SubscribeReq.Builder.class);
+              com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp.class, com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<SubscribeReq> PARSER =
-        new com.google.protobuf.AbstractParser<SubscribeReq>() {
-      public SubscribeReq parsePartialFrom(
+    public static com.google.protobuf.Parser<SubscribeResp> PARSER =
+        new com.google.protobuf.AbstractParser<SubscribeResp>() {
+      public SubscribeResp parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SubscribeReq(input, extensionRegistry);
+        return new SubscribeResp(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<SubscribeReq> getParserForType() {
+    public com.google.protobuf.Parser<SubscribeResp> getParserForType() {
       return PARSER;
     }
 
@@ -195,40 +184,53 @@ public final class SubscribeResp {
       return respCode_;
     }
 
-    // repeated string desc = 3;
+    // required string desc = 3;
     public static final int DESC_FIELD_NUMBER = 3;
-    private com.google.protobuf.LazyStringList desc_;
+    private java.lang.Object desc_;
     /**
-     * <code>repeated string desc = 3;</code>
+     * <code>required string desc = 3;</code>
      */
-    public java.util.List<java.lang.String>
-        getDescList() {
-      return desc_;
+    public boolean hasDesc() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>repeated string desc = 3;</code>
+     * <code>required string desc = 3;</code>
      */
-    public int getDescCount() {
-      return desc_.size();
+    public java.lang.String getDesc() {
+      java.lang.Object ref = desc_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          desc_ = s;
+        }
+        return s;
+      }
     }
     /**
-     * <code>repeated string desc = 3;</code>
-     */
-    public java.lang.String getDesc(int index) {
-      return desc_.get(index);
-    }
-    /**
-     * <code>repeated string desc = 3;</code>
+     * <code>required string desc = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getDescBytes(int index) {
-      return desc_.getByteString(index);
+        getDescBytes() {
+      java.lang.Object ref = desc_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        desc_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private void initFields() {
       subReqID_ = 0;
       respCode_ = 0;
-      desc_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      desc_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -240,6 +242,10 @@ public final class SubscribeResp {
         return false;
       }
       if (!hasRespCode()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDesc()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -256,8 +262,8 @@ public final class SubscribeResp {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, respCode_);
       }
-      for (int i = 0; i < desc_.size(); i++) {
-        output.writeBytes(3, desc_.getByteString(i));
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getDescBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -276,14 +282,9 @@ public final class SubscribeResp {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, respCode_);
       }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < desc_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeBytesSizeNoTag(desc_.getByteString(i));
-        }
-        size += dataSize;
-        size += 1 * getDescList().size();
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getDescBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -297,53 +298,53 @@ public final class SubscribeResp {
       return super.writeReplace();
     }
 
-    public static com.yang.netty.protobuf.SubscribeResp.SubscribeReq parseFrom(
+    public static com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.yang.netty.protobuf.SubscribeResp.SubscribeReq parseFrom(
+    public static com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.yang.netty.protobuf.SubscribeResp.SubscribeReq parseFrom(byte[] data)
+    public static com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.yang.netty.protobuf.SubscribeResp.SubscribeReq parseFrom(
+    public static com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.yang.netty.protobuf.SubscribeResp.SubscribeReq parseFrom(java.io.InputStream input)
+    public static com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.yang.netty.protobuf.SubscribeResp.SubscribeReq parseFrom(
+    public static com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.yang.netty.protobuf.SubscribeResp.SubscribeReq parseDelimitedFrom(java.io.InputStream input)
+    public static com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.yang.netty.protobuf.SubscribeResp.SubscribeReq parseDelimitedFrom(
+    public static com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.yang.netty.protobuf.SubscribeResp.SubscribeReq parseFrom(
+    public static com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.yang.netty.protobuf.SubscribeResp.SubscribeReq parseFrom(
+    public static com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -352,7 +353,7 @@ public final class SubscribeResp {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.yang.netty.protobuf.SubscribeResp.SubscribeReq prototype) {
+    public static Builder newBuilder(com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -364,24 +365,24 @@ public final class SubscribeResp {
       return builder;
     }
     /**
-     * Protobuf type {@code netty.SubscribeReq}
+     * Protobuf type {@code netty.SubscribeResp}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.yang.netty.protobuf.SubscribeResp.SubscribeReqOrBuilder {
+       implements com.yang.netty.protobuf.SubscribeRespProto.SubscribeRespOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.yang.netty.protobuf.SubscribeResp.internal_static_netty_SubscribeReq_descriptor;
+        return com.yang.netty.protobuf.SubscribeRespProto.internal_static_netty_SubscribeResp_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.yang.netty.protobuf.SubscribeResp.internal_static_netty_SubscribeReq_fieldAccessorTable
+        return com.yang.netty.protobuf.SubscribeRespProto.internal_static_netty_SubscribeResp_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.yang.netty.protobuf.SubscribeResp.SubscribeReq.class, com.yang.netty.protobuf.SubscribeResp.SubscribeReq.Builder.class);
+                com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp.class, com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp.Builder.class);
       }
 
-      // Construct using com.yang.netty.protobuf.SubscribeResp.SubscribeReq.newBuilder()
+      // Construct using com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -405,7 +406,7 @@ public final class SubscribeResp {
         bitField0_ = (bitField0_ & ~0x00000001);
         respCode_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        desc_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        desc_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
@@ -416,23 +417,23 @@ public final class SubscribeResp {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.yang.netty.protobuf.SubscribeResp.internal_static_netty_SubscribeReq_descriptor;
+        return com.yang.netty.protobuf.SubscribeRespProto.internal_static_netty_SubscribeResp_descriptor;
       }
 
-      public com.yang.netty.protobuf.SubscribeResp.SubscribeReq getDefaultInstanceForType() {
-        return com.yang.netty.protobuf.SubscribeResp.SubscribeReq.getDefaultInstance();
+      public com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp getDefaultInstanceForType() {
+        return com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp.getDefaultInstance();
       }
 
-      public com.yang.netty.protobuf.SubscribeResp.SubscribeReq build() {
-        com.yang.netty.protobuf.SubscribeResp.SubscribeReq result = buildPartial();
+      public com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp build() {
+        com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.yang.netty.protobuf.SubscribeResp.SubscribeReq buildPartial() {
-        com.yang.netty.protobuf.SubscribeResp.SubscribeReq result = new com.yang.netty.protobuf.SubscribeResp.SubscribeReq(this);
+      public com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp buildPartial() {
+        com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp result = new com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -443,10 +444,8 @@ public final class SubscribeResp {
           to_bitField0_ |= 0x00000002;
         }
         result.respCode_ = respCode_;
-        if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          desc_ = new com.google.protobuf.UnmodifiableLazyStringList(
-              desc_);
-          bitField0_ = (bitField0_ & ~0x00000004);
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
         }
         result.desc_ = desc_;
         result.bitField0_ = to_bitField0_;
@@ -455,30 +454,25 @@ public final class SubscribeResp {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.yang.netty.protobuf.SubscribeResp.SubscribeReq) {
-          return mergeFrom((com.yang.netty.protobuf.SubscribeResp.SubscribeReq)other);
+        if (other instanceof com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp) {
+          return mergeFrom((com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.yang.netty.protobuf.SubscribeResp.SubscribeReq other) {
-        if (other == com.yang.netty.protobuf.SubscribeResp.SubscribeReq.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp other) {
+        if (other == com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp.getDefaultInstance()) return this;
         if (other.hasSubReqID()) {
           setSubReqID(other.getSubReqID());
         }
         if (other.hasRespCode()) {
           setRespCode(other.getRespCode());
         }
-        if (!other.desc_.isEmpty()) {
-          if (desc_.isEmpty()) {
-            desc_ = other.desc_;
-            bitField0_ = (bitField0_ & ~0x00000004);
-          } else {
-            ensureDescIsMutable();
-            desc_.addAll(other.desc_);
-          }
+        if (other.hasDesc()) {
+          bitField0_ |= 0x00000004;
+          desc_ = other.desc_;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -494,6 +488,10 @@ public final class SubscribeResp {
           
           return false;
         }
+        if (!hasDesc()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -501,11 +499,11 @@ public final class SubscribeResp {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.yang.netty.protobuf.SubscribeResp.SubscribeReq parsedMessage = null;
+        com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.yang.netty.protobuf.SubscribeResp.SubscribeReq) e.getUnfinishedMessage();
+          parsedMessage = (com.yang.netty.protobuf.SubscribeRespProto.SubscribeResp) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -582,115 +580,96 @@ public final class SubscribeResp {
         return this;
       }
 
-      // repeated string desc = 3;
-      private com.google.protobuf.LazyStringList desc_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      private void ensureDescIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          desc_ = new com.google.protobuf.LazyStringArrayList(desc_);
-          bitField0_ |= 0x00000004;
-         }
-      }
+      // required string desc = 3;
+      private java.lang.Object desc_ = "";
       /**
-       * <code>repeated string desc = 3;</code>
+       * <code>required string desc = 3;</code>
        */
-      public java.util.List<java.lang.String>
-          getDescList() {
-        return java.util.Collections.unmodifiableList(desc_);
+      public boolean hasDesc() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>repeated string desc = 3;</code>
+       * <code>required string desc = 3;</code>
        */
-      public int getDescCount() {
-        return desc_.size();
+      public java.lang.String getDesc() {
+        java.lang.Object ref = desc_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          desc_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>repeated string desc = 3;</code>
-       */
-      public java.lang.String getDesc(int index) {
-        return desc_.get(index);
-      }
-      /**
-       * <code>repeated string desc = 3;</code>
+       * <code>required string desc = 3;</code>
        */
       public com.google.protobuf.ByteString
-          getDescBytes(int index) {
-        return desc_.getByteString(index);
+          getDescBytes() {
+        java.lang.Object ref = desc_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          desc_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
       }
       /**
-       * <code>repeated string desc = 3;</code>
+       * <code>required string desc = 3;</code>
        */
       public Builder setDesc(
-          int index, java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureDescIsMutable();
-        desc_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string desc = 3;</code>
-       */
-      public Builder addDesc(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  ensureDescIsMutable();
-        desc_.add(value);
+  bitField0_ |= 0x00000004;
+        desc_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string desc = 3;</code>
-       */
-      public Builder addAllDesc(
-          java.lang.Iterable<java.lang.String> values) {
-        ensureDescIsMutable();
-        super.addAll(values, desc_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string desc = 3;</code>
+       * <code>required string desc = 3;</code>
        */
       public Builder clearDesc() {
-        desc_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
+        desc_ = getDefaultInstance().getDesc();
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string desc = 3;</code>
+       * <code>required string desc = 3;</code>
        */
-      public Builder addDescBytes(
+      public Builder setDescBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  ensureDescIsMutable();
-        desc_.add(value);
+  bitField0_ |= 0x00000004;
+        desc_ = value;
         onChanged();
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:netty.SubscribeReq)
+      // @@protoc_insertion_point(builder_scope:netty.SubscribeResp)
     }
 
     static {
-      defaultInstance = new SubscribeReq(true);
+      defaultInstance = new SubscribeResp(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:netty.SubscribeReq)
+    // @@protoc_insertion_point(class_scope:netty.SubscribeResp)
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_netty_SubscribeReq_descriptor;
+    internal_static_netty_SubscribeResp_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_netty_SubscribeReq_fieldAccessorTable;
+      internal_static_netty_SubscribeResp_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -700,21 +679,21 @@ public final class SubscribeResp {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\023SubscribeResp.proto\022\005netty\"@\n\014Subscrib" +
-      "eReq\022\020\n\010subReqID\030\001 \002(\005\022\020\n\010respCode\030\002 \002(\005" +
-      "\022\014\n\004desc\030\003 \003(\tB(\n\027com.yang.netty.protobu" +
-      "fB\rSubscribeResp"
+      "\n\023SubscribeResp.proto\022\005netty\"A\n\rSubscrib" +
+      "eResp\022\020\n\010subReqID\030\001 \002(\005\022\020\n\010respCode\030\002 \002(" +
+      "\005\022\014\n\004desc\030\003 \002(\tB-\n\027com.yang.netty.protob" +
+      "ufB\022SubscribeRespProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_netty_SubscribeReq_descriptor =
+          internal_static_netty_SubscribeResp_descriptor =
             getDescriptor().getMessageTypes().get(0);
-          internal_static_netty_SubscribeReq_fieldAccessorTable = new
+          internal_static_netty_SubscribeResp_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_netty_SubscribeReq_descriptor,
+              internal_static_netty_SubscribeResp_descriptor,
               new java.lang.String[] { "SubReqID", "RespCode", "Desc", });
           return null;
         }

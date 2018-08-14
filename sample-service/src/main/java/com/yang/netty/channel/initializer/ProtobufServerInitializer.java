@@ -1,0 +1,27 @@
+package com.yang.netty.channel.initializer;
+
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.handler.codec.protobuf.ProtobufDecoder;
+import io.netty.handler.codec.protobuf.ProtobufEncoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
+
+import com.yang.netty.protobuf.SubscribeReqProto;
+import com.yang.netty.server.handler.ProtobufServerHandler;
+
+/**
+ * 无解码器的Handler
+ * @author yangyaming
+ */
+public class ProtobufServerInitializer extends ChannelInitializer<SocketChannel>{
+
+	@Override
+	protected void initChannel(SocketChannel channel) throws Exception {
+		channel.pipeline().addLast(new ProtobufVarint32FrameDecoder());
+		channel.pipeline().addLast(new ProtobufDecoder(SubscribeReqProto.SubscribeReq.getDefaultInstance()));
+		channel.pipeline().addLast(new ProtobufVarint32LengthFieldPrepender());
+		channel.pipeline().addLast(new ProtobufEncoder());
+		channel.pipeline().addLast(new ProtobufServerHandler());
+	}
+}
