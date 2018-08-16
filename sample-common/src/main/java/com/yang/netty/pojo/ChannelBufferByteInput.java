@@ -15,8 +15,7 @@ public class ChannelBufferByteInput implements ByteInput {
     }
 
     @Override
-    public void close() throws IOException {
-    }
+    public void close() throws IOException {}
 
     @Override
     public int available() throws IOException {

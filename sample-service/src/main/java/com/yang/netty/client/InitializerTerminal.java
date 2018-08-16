@@ -1,6 +1,5 @@
 package com.yang.netty.client;
 
-
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
@@ -10,12 +9,15 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 
 import com.yang.netty.factory.initializer.ChannelInitializerFactory;
 
-public class NettyClient extends InitializerTerminal{
-	
-	public NettyClient(){}
-	
-	public NettyClient(ChannelInitializerFactory factory){
-		super(factory);
+public class InitializerTerminal {
+	protected ChannelInitializerFactory factory;
+
+	public InitializerTerminal() {
+		factory = new ChannelInitializerFactory();
+	}
+
+	public InitializerTerminal(ChannelInitializerFactory factory) {
+		this.factory = factory;
 	}
 	
 	public void connect(String hostName,int port){
@@ -36,4 +38,5 @@ public class NettyClient extends InitializerTerminal{
 			group.shutdownGracefully();
 		}
 	}
+	
 }

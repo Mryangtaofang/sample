@@ -5,8 +5,9 @@ import io.netty.channel.ChannelHandlerContext;
 
 
 
+
+import com.yang.enums.MessageTypeEnum;
 import com.yang.netty.pojo.Header;
-import com.yang.netty.pojo.MessageType;
 import com.yang.netty.pojo.NettyMessage;
 
 public class LoginAuthReqHandler extends ChannelHandlerAdapter {
@@ -25,7 +26,7 @@ public class LoginAuthReqHandler extends ChannelHandlerAdapter {
         // 如果是握手应答消息，需要判断是否认证成功
         //对握手应答消息进行处理，首先判断消息是否是握手应答消息，
         if (message.getHeader() != null &&
-                message.getHeader().getType() == MessageType.LOGIN_RESP.value()) {
+                message.getHeader().getType() == MessageTypeEnum.LOGIN_RESP.value()) {
             byte loginResult = (Byte) message.getBody();
             if (loginResult != (byte) 0) {
                 // 如果是握手应答消息，则对应答结果进行判断，如果非0，说明认证失败，关闭链路，重新发起连接。
@@ -45,7 +46,7 @@ public class LoginAuthReqHandler extends ChannelHandlerAdapter {
         // 由于采用IP白名单认证机制，因此，不需要携带消息体，消息体为空，消息类型为3：握手请求消息。
         NettyMessage message = new NettyMessage();
         Header header = new Header();
-        header.setType(MessageType.LOGIN_REQ.value());
+        header.setType(MessageTypeEnum.LOGIN_REQ.value());
         message.setHeader(header);
         return message;
     }

@@ -12,20 +12,17 @@ import io.netty.handler.logging.LoggingHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.yang.netty.client.InitializerTerminal;
 import com.yang.netty.client.handler.NettyClientHandler;
 import com.yang.netty.factory.initializer.ChannelInitializerFactory;
 
-public class NettyServer {
+public class NettyServer extends InitializerTerminal{
 	protected static final Logger logger = LoggerFactory.getLogger(NettyClientHandler.class);
 	
-	private ChannelInitializerFactory factory;
-	
-	public NettyServer(){
-		factory = new ChannelInitializerFactory();
-	}
+	public NettyServer(){}
 	
 	public NettyServer(ChannelInitializerFactory factory){
-		this.factory =  factory;
+		super(factory);
 	}
 	
 	public void bind(int port){

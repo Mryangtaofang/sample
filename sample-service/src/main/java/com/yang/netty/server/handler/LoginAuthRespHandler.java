@@ -7,8 +7,8 @@ import java.net.InetSocketAddress;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.yang.enums.MessageTypeEnum;
 import com.yang.netty.pojo.Header;
-import com.yang.netty.pojo.MessageType;
 import com.yang.netty.pojo.NettyMessage;
 
 public class LoginAuthRespHandler extends ChannelHandlerAdapter {
@@ -22,7 +22,7 @@ public class LoginAuthRespHandler extends ChannelHandlerAdapter {
 
         // 如果是握手请求消息，处理，其他消息透传
         if (message.getHeader() != null
-                && message.getHeader().getType() == MessageType.LOGIN_REQ.value()) {
+                && message.getHeader().getType() == MessageTypeEnum.LOGIN_REQ.value()) {
 
             String nodeIndex = ctx.channel().remoteAddress().toString();
             NettyMessage loginResp = null;
@@ -57,7 +57,7 @@ public class LoginAuthRespHandler extends ChannelHandlerAdapter {
     private NettyMessage buildResponse(byte result) {
         NettyMessage message = new NettyMessage();
         Header header = new Header();
-        header.setType(MessageType.LOGIN_RESP.value());
+        header.setType(MessageTypeEnum.LOGIN_RESP.value());
         message.setHeader(header);
         message.setBody(result);
         return message;

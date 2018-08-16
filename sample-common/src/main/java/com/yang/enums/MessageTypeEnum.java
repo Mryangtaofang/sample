@@ -1,16 +1,15 @@
-package com.yang.netty.pojo;
+package com.yang.enums;
 
-public enum MessageType {
+public enum MessageTypeEnum {
     LOGIN_REQ((byte)3),
     LOGIN_RESP((byte)4),
     HEARTBEAT_REQ((byte)5),
     HEARTBEAT_RESP((byte)6),
-
     ;
 
     public byte value;
 
-    MessageType(byte v){
+    MessageTypeEnum(byte v){
         this.value = v;
     }
 

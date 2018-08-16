@@ -3,8 +3,8 @@ package com.yang.netty.server.handler;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 
+import com.yang.enums.MessageTypeEnum;
 import com.yang.netty.pojo.Header;
-import com.yang.netty.pojo.MessageType;
 import com.yang.netty.pojo.NettyMessage;
 
 public class HeartBeatRespHandler extends ChannelHandlerAdapter {
@@ -14,7 +14,7 @@ public class HeartBeatRespHandler extends ChannelHandlerAdapter {
         NettyMessage message = (NettyMessage) msg;
         // 返回心跳应答消息
         if (message.getHeader() != null
-                && message.getHeader().getType() == MessageType.HEARTBEAT_REQ.value()) {
+                && message.getHeader().getType() == MessageTypeEnum.HEARTBEAT_REQ.value()) {
             System.out.println("Receive client heart beat message : ---> "+ message);
             NettyMessage heartBeat = buildHeatBeat();
             System.out.println("Send heart beat response message to client : ---> "+ heartBeat);
@@ -27,7 +27,7 @@ public class HeartBeatRespHandler extends ChannelHandlerAdapter {
     private NettyMessage buildHeatBeat() {
         NettyMessage message = new NettyMessage();
         Header header = new Header();
-        header.setType(MessageType.HEARTBEAT_RESP.value());
+        header.setType(MessageTypeEnum.HEARTBEAT_RESP.value());
         message.setHeader(header);
         return message;
     }

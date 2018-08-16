@@ -6,8 +6,8 @@ import io.netty.util.concurrent.ScheduledFuture;
 
 import java.util.concurrent.TimeUnit;
 
+import com.yang.enums.MessageTypeEnum;
 import com.yang.netty.pojo.Header;
-import com.yang.netty.pojo.MessageType;
 import com.yang.netty.pojo.NettyMessage;
 
 public class HeartBeatReqHandler extends ChannelHandlerAdapter {
@@ -20,14 +20,14 @@ public class HeartBeatReqHandler extends ChannelHandlerAdapter {
         // 握手成功，主动发送心跳消息
         //HeartBeatReqHandler接收到之后对消息进行判断
         if (message.getHeader() != null
-                && message.getHeader().getType() == MessageType.LOGIN_RESP.value()) {
+                && message.getHeader().getType() == MessageTypeEnum.LOGIN_RESP.value()) {
             //当握手成功之后，握手请求Handler会继续将握手成功消息向下透传
             //如果是握手成功消息，则启动无限循环定时器用于定期发送心跳消息。
             //由于NioEventLoop是一个schedule，因此它支持定时器的执行。
             // 心跳定时器的单位是毫秒，默认为5000，即每5秒发送一条心跳消息。
             heartBeat = ctx.executor().scheduleAtFixedRate(new HeartBeatReqHandler.HeartBeatTask(ctx), 0, 5000,TimeUnit.MILLISECONDS);
         } else if (message.getHeader() != null
-                && message.getHeader().getType() == MessageType.HEARTBEAT_RESP.value()) {
+                && message.getHeader().getType() == MessageTypeEnum.HEARTBEAT_RESP.value()) {
             //接收服务端发送的心跳应答消息，并打印客户端接收和发送的心跳消息。
             System.out.println("Client receive server heart beat message : ---> "+ message);
         } else {
@@ -53,7 +53,7 @@ public class HeartBeatReqHandler extends ChannelHandlerAdapter {
         private NettyMessage buildHeatBeat() {
             NettyMessage message = new NettyMessage();
             Header header = new Header();
-            header.setType(MessageType.HEARTBEAT_REQ.value());
+            header.setType(MessageTypeEnum.HEARTBEAT_REQ.value());
             message.setHeader(header);
             return message;
         }
