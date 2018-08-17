@@ -8,6 +8,6 @@ import com.yang.netty.client.CustomerClient;
 public class Client {
 
 	public static void main(String[] args){
-		new CustomerClient().connect("120.0.0.1",8989);
+		new CustomerClient().connect("127.0.0.1",8989);
 	}
 }

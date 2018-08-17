@@ -24,7 +24,7 @@ public class CustomerClient extends InitializerTerminal{
 	
 	EventLoopGroup group = new NioEventLoopGroup();
 
-	public void connect(int port, String host) {
+	public void connect(String host,int port) {
 		try {
 			Bootstrap bootstrap = new Bootstrap();
 			bootstrap.group(group).channel(NioSocketChannel.class)
@@ -32,7 +32,7 @@ public class CustomerClient extends InitializerTerminal{
 			         .handler(factory.clientInitializer());
 
 			// 发起异步连接操作
-			ChannelFuture future = bootstrap.connect(	new InetSocketAddress(host, port),
+			ChannelFuture future = bootstrap.connect(new InetSocketAddress(host, port),
 														new InetSocketAddress(NettyConstant.LOCALIP,NettyConstant.LOCAL_PORT)).sync();
 			future.channel().closeFuture().sync();
 		} catch (InterruptedException e) {
@@ -44,7 +44,7 @@ public class CustomerClient extends InitializerTerminal{
 				public void run() {
 					try {
 						TimeUnit.SECONDS.sleep(5);
-						connect(NettyConstant.PORT, NettyConstant.REMOTEIP);
+						connect( NettyConstant.REMOTEIP,NettyConstant.PORT);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

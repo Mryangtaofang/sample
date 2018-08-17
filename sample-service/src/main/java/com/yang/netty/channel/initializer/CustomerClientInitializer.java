@@ -4,6 +4,9 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.yang.netty.decoder.NettyMessageDecoder;
 import com.yang.netty.encoder.NettyMessageEncoder;
 import com.yang.netty.server.handler.HeartBeatReqHandler;
@@ -14,7 +17,7 @@ import com.yang.netty.server.handler.LoginAuthReqHandler;
  * @author yangyaming
  */
 public class CustomerClientInitializer extends ChannelInitializer<SocketChannel>{
-
+	protected static final Logger logger = LoggerFactory.getLogger(CustomerServerInitializer.class);
 	@Override
 	protected void initChannel(SocketChannel ch) throws Exception {
 		ch.pipeline().addLast(new NettyMessageDecoder(1024 * 1024, 4, 4));
@@ -23,4 +26,5 @@ public class CustomerClientInitializer extends ChannelInitializer<SocketChannel>
 		ch.pipeline().addLast("LoginAuthHandler",new LoginAuthReqHandler());
 		ch.pipeline().addLast("HeartBeatHandler",new HeartBeatReqHandler());
 	}
+
 }

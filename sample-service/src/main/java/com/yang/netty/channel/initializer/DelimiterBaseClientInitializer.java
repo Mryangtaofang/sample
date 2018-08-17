@@ -10,7 +10,7 @@ import io.netty.handler.codec.string.StringDecoder;
 import com.yang.netty.client.handler.EchoClientHandler;
 
 /**
- * 无解码器的Handler
+ * 自定义分隔符解码器,这里采用的是$_为分隔符
  * @author yangyaming
  */
 public class DelimiterBaseClientInitializer extends ChannelInitializer<SocketChannel>{

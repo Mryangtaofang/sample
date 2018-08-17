@@ -7,12 +7,16 @@ import java.net.InetSocketAddress;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.yang.enums.MessageTypeEnum;
 import com.yang.netty.pojo.Header;
 import com.yang.netty.pojo.NettyMessage;
 
 public class LoginAuthRespHandler extends ChannelHandlerAdapter {
-
+	protected static final Logger logger = LoggerFactory.getLogger(LoginAuthRespHandler.class);
+	
     private Map<String, Boolean> nodeCheck = new ConcurrentHashMap<String ,Boolean>();
     private String[] whitekList = {"127.0.0.1","10.100.1.122"};
 
@@ -23,7 +27,7 @@ public class LoginAuthRespHandler extends ChannelHandlerAdapter {
         // 如果是握手请求消息，处理，其他消息透传
         if (message.getHeader() != null
                 && message.getHeader().getType() == MessageTypeEnum.LOGIN_REQ.value()) {
-
+        	logger.info("LoginAuthResp--登录权限验证! ");
             String nodeIndex = ctx.channel().remoteAddress().toString();
             NettyMessage loginResp = null;
             // 重复登录，拒绝
@@ -47,9 +51,10 @@ public class LoginAuthRespHandler extends ChannelHandlerAdapter {
                     nodeCheck.put(nodeIndex, true);
                 }
             }
-            System.out.println("The login response is : " + loginResp + " body [" + loginResp.getBody() + "]");
+            logger.info("The login response is : " + loginResp + " body [" + loginResp.getBody() + "]");
             ctx.writeAndFlush(loginResp);
         } else {
+        	logger.info("LoginAuthResp--非登录权限验证! ");
             ctx.fireChannelRead(msg);
         }
     }

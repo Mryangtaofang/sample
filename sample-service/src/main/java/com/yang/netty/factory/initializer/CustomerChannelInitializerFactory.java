@@ -2,16 +2,16 @@ package com.yang.netty.factory.initializer;
 
 import io.netty.channel.ChannelHandler;
 
-import com.yang.netty.channel.initializer.SubReqClientInitializer;
-import com.yang.netty.channel.initializer.SubReqServerInitializer;
+import com.yang.netty.channel.initializer.CustomerClientInitializer;
+import com.yang.netty.channel.initializer.CustomerServerInitializer;
 
 public class CustomerChannelInitializerFactory extends ChannelInitializerFactory{
 
 	public ChannelHandler clientInitializer(){
-		return new SubReqClientInitializer();
+		return new CustomerClientInitializer();
 	}
 	
 	public ChannelHandler serverInitializer(){
-		return new SubReqServerInitializer();
+		return new CustomerServerInitializer();
 	}
 }

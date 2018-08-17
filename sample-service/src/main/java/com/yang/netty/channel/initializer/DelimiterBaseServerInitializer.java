@@ -10,7 +10,7 @@ import io.netty.handler.codec.string.StringDecoder;
 import com.yang.netty.server.handler.EchoServerHandler;
 
 /**
- * 无解码器的Handler
+ * 自定义分隔符解码器
  * @author yangyaming
  */
 public class DelimiterBaseServerInitializer extends ChannelInitializer<SocketChannel>{
