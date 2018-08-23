@@ -73,6 +73,8 @@ public class ArrFullArray {
 		}
 		
 		for(int i = start;i <= end;i++){
+			if(i != start && chasrArr[i] == chasrArr[start])
+				continue;
 			swap(chasrArr,start,i);
 			getAllArr(chasrArr,start+1,end,result);
 			swap(chasrArr,start,i);

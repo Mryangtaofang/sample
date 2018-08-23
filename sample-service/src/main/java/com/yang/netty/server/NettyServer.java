@@ -4,6 +4,7 @@ import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
+import io.netty.channel.nio.NioEventLoop;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
@@ -28,7 +29,7 @@ public class NettyServer extends InitializerTerminal{
 	public void bind(int port){
 		EventLoopGroup bossGroup = new NioEventLoopGroup();
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
-		
+		NioEventLoop l;
 		try {
 		ServerBootstrap bootstrap = new ServerBootstrap();
 		bootstrap.group(bossGroup,workerGroup)
