@@ -1,25 +1,22 @@
 package com.yang.gof.decorate;
 
-import com.yang.gof.decorate.dressup.Finery;
-import com.yang.gof.decorate.dressup.Gentleman;
-import com.yang.gof.decorate.dressup.Shorts;
-import com.yang.gof.decorate.dressup.TShirts;
+import com.yang.gof.decorate.dressup.CollimationMirror;
+import com.yang.gof.decorate.dressup.Pistol;
+import com.yang.gof.decorate.dressup.Silencer;
 
 
 
 public class DecorateMain {
 	
 	public static void main(String[] args) {
-		Gentleman man = new Gentleman("yangyaming");
+		Pistol gun = new Pistol();
 		
-		Finery finery = new Finery();
-		Shorts shorts = new Shorts();
-		TShirts tShirts = new TShirts();
+		CollimationMirror mirror = new CollimationMirror();
+		Silencer silencer = new Silencer();
 		
-		finery.dressUp(man);
-		shorts.dressUp(finery);
-		tShirts.dressUp(shorts);
+		mirror.dressUp(gun);
+		silencer.dressUp(mirror);
 		
-		tShirts.show();
+		System.out.println(silencer.fire());
 	}
 }
