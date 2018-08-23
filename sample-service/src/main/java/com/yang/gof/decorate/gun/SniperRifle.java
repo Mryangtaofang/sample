@@ -1,4 +1,4 @@
-package com.yang.gof.decorate.dressup;
+package com.yang.gof.decorate.gun;
 
 /**
  * 狙击枪

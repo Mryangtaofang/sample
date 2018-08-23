@@ -11,8 +11,11 @@ public class Work {
 		this.time = time;
 	}
 	
-	public TimeState getTimeState() {
-		return timeState;
+	/**
+	 * 核心方法
+	 */
+	public void doWork(){
+		timeState.doSomething(this);
 	}
 
 	public void setTimeState(TimeState timeState) {
@@ -22,14 +25,4 @@ public class Work {
 	public Integer getTime() {
 		return time;
 	}
-
-	public void setTime(Integer time) {
-		this.time = time;
-	}
-	
-	public void doWork(){
-		timeState.doSomething(this);
-	}
-
-	
 }

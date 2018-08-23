@@ -1,4 +1,4 @@
-package com.yang.gof.decorate.dressup;
+package com.yang.gof.decorate.gun;
 
 /**
  * 配件
@@ -7,6 +7,9 @@ public class DecorateParts extends Gun{
 
 	protected Gun gun;
 
+	/**
+	 * 核心方法
+	 */
 	@Override
 	public Fire fire() {
 		return (gun != null) ? gun.fire() : null;
