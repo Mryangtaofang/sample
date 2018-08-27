@@ -1,5 +1,7 @@
 package com.yang.leetcode.tree;
 
+import com.yang.leetcode.TreeNode;
+
 /**
  * 	给一个二叉树，求这个二叉树叶子节点，最浅的层数
  *	Given a binary tree, find its minimum depth.

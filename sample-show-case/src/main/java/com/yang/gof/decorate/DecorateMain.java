@@ -17,18 +17,21 @@ public class DecorateMain {
 	public static void main(String[] args) {
 		//创建一把手枪
 		Pistol gun = new Pistol();
-		//创建一个瞄准镜
-		CollimationMirror mirror = new CollimationMirror();
-		//创建一个消音器
-		Silencer silencer = new Silencer();
+		System.out.println("手枪-[裸枪]-" + gun.fire());
 		
-		//安装瞄准镜
-		mirror.dressUp(gun);
-		//安装消音器
-		silencer.dressUp(mirror);
+		//创建一个瞄准镜,裸枪上，安装瞄准镜
+		CollimationMirror mirrorGun = new CollimationMirror();
+		mirrorGun.install(gun);
+		System.out.println("手枪-[瞄准镜]-" + mirrorGun.fire());
 		
-		System.out.println("手枪-[无配件]-" + gun.fire());
-		System.out.println("手枪-[瞄准镜]-" + mirror.fire());
-		System.out.println("手枪-[瞄准镜,消音器]-" + silencer.fire());
+		//创建一个消音器,在安装了瞄准镜的基础上，再安装消音器
+		Silencer silencerMirrorGun = new Silencer();
+		silencerMirrorGun.install(mirrorGun);
+		System.out.println("手枪-[瞄准镜,消音器]-" + silencerMirrorGun.fire());
+		
+		//创建一个消音器,裸枪上，安装消音器
+		Silencer silencerGun = new Silencer();
+		silencerGun.install(gun);
+		System.out.println("手枪-[消音器]-" + silencerGun.fire());
 	}
 }

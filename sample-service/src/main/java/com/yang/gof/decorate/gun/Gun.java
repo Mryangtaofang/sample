@@ -2,11 +2,6 @@ package com.yang.gof.decorate.gun;
 
 
 public abstract class Gun {
-	//射程
-	protected int range; 
-	//开枪是否有声音
-	protected boolean voice; 
-	
+	//开火
 	public abstract Fire fire();
-	
 }

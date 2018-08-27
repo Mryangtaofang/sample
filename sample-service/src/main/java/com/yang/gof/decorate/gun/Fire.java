@@ -11,21 +11,11 @@ public class Fire {
 		return "[射程:" + range + ","+((voice) ? "消音":"没有消音")+"]";
 	}
 
-	public int getRange() {
-		return range;
-	}
+	/***************************getter & setter*******************************/
+	public int getRange() {return range;}
+	public void setRange(int range) {this.range = range;}
 
-	public void setRange(int range) {
-		this.range = range;
-	}
-
-	public boolean isVoice() {
-		return voice;
-	}
-
-	public void setVoice(boolean voice) {
-		this.voice = voice;
-	}
-	
-	
+	public boolean isVoice() {return voice;}
+	public void setVoice(boolean voice) {this.voice = voice;}
+	/***************************getter & setter*******************************/
 }

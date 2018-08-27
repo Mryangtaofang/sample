@@ -3,7 +3,7 @@ package com.yang.gof.decorate.gun;
 /**
  * 配件
  */
-public class DecorateParts extends Gun{
+public abstract class DecorateParts extends Gun{
 
 	protected Gun gun;
 
@@ -15,7 +15,7 @@ public class DecorateParts extends Gun{
 		return (gun != null) ? gun.fire() : null;
 	}
 
-	public void dressUp(Gun gun) {
+	public void install(Gun gun) {
 		this.gun = gun;
 	}
 	
