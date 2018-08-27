@@ -1,5 +1,7 @@
 package com.yang.leetcode.tree;
 
+import com.yang.leetcode.TreeNode;
+
 import java.util.ArrayList;
 
 /**
@@ -15,7 +17,7 @@ public class SumEqualPath {
     private ArrayList<Integer> currentPath = new ArrayList<Integer>();
     
     
-    public ArrayList<ArrayList<Integer>> FindPath(TreeNode root,int target) {
+    public ArrayList<ArrayList<Integer>> FindPath(TreeNode root, int target) {
     	
         if(root == null)
         	return result;

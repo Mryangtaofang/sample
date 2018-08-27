@@ -1,13 +1,13 @@
-package com.yang.sort;
+package com.yang.leetcode;
 
 
 public class ListNode {
 	public ListNode next;
 	public int val;
 
-	ListNode(int val) {
+	public ListNode(int val) {
 		this.val = val;
 	}
-	
-	ListNode() {}
+
+	public ListNode() {}
 }

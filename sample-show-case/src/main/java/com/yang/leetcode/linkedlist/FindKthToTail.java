@@ -1,7 +1,5 @@
 package com.yang.leetcode.linkedlist;
 
-import com.yang.sort.ListNode;
-
 
 public class FindKthToTail {
 	/**
