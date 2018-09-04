@@ -1,4 +1,4 @@
-package com.zzx.threadtest;
+package com.yang.threadtest;
 
 import java.util.HashSet;
 import java.util.Stack;

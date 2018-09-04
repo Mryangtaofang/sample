@@ -1,4 +1,4 @@
-package com.zzx.threadtest;
+package com.yang.threadtest;
 
 public class ThreadTest {
 
