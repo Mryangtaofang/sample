@@ -25,7 +25,9 @@
 	<modules>
 		<module>sample-common</module>
 		<module>sample-service</module>
-		<module>sample-show-case</module>
+		<module>sample-case</module>
+		<module>sample-case-leetcode</module>
+		<module>sample-case-netty</module>
 	</modules>
 
 	<dependencies>

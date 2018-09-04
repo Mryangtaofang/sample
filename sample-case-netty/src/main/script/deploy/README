@@ -1,0 +1,61 @@
+使用说明
+ssh到179上source目录下执行
+fab -l命令列出所有执行命令，根据提示进行操作即可，主要命令介绍如下
+fab kill 杀死19,21,22,23,24,25的所有爬虫服务
+fab kill:21#22杀死两台服务器上的爬虫服务，多个server间以#分隔
+fab start 启动19,21,22,23,24,25的所有爬虫服务
+fab package 打包
+fab package upload dispatch:21#22 start:21#22 一站式打包　上传　分发　启动
+
+
+   
+concenpt explaination:
+build-machine:currently we use 179 as our build service
+dispatch-matchine:10.10.224.98 is our forawaring ssh machine,use this machine as a dispatch service
+fetch machine dependency liberaries
+local-machine:our development laptop,if you want to control the whole deploy process in you local laptop,you need
+install python enviroment,currently we tested on *nix system works well,otherwise you need ssh to 179 to execute
+the deploy process,this step is optional.
+
+fetch-machine->183.203.8.19-25
+dispatch-machine->10.10.224.98
+build-machine->10.10.243.179
+local-machine->your laptop
+
+fetch machine dependency liberaries for centos 5 serials
+
+yum groupinstall 'Development Tools'
+yum install zlib zlib-devel openssl openssl-devel bzip2 bzip2-devel ncurses ncurses-devel readline readline-devel gdbm gdbm-devel bsddb bsddb-devel sqlite sqlite-devel subversion subversion-devel patch libevent-devel tcl tcl-devel tk tk-devel
+
+
+install py2.6 with source and other python libraries
+echo '/opt/python2.6/lib' > /etc/ld.so.conf.d/opt-python2.6.conf
+ldconfig -p|grep python
+./configure --prefix=/opt/python2.6 --with-threads --enable-shared --with-zlib=/usr/include --enable-universalsdk
+make && make install
+ldconfig
+
+mv /usr/bin/python /usr/bin/python.bak
+ln -s /opt/python2.6/bin/python /usr/bin/python
+vi /usr/bin/yum
+edit at first line at then end add 2.4 for not broken yum use the old system owner version python
+type python -V check current python version
+
+
+ vi /etc/profile
+ export PATH=/opt/python2.6/bin:$PATH
+source /etc/profile
+
+install python-setuptools
+wget http://pypi.python.org/packages/source/s/setuptools/setuptools-0.6c11.tar.gz#md5=7df2a529a074f613b509fb44feefe74e
+tar -zxvf ./setuptools-0.6c11.tar.gz && cd setuptools-0.6c11 && python setup.py install
+
+install python-daemon
+easy_install python-daemon
+go into python interacive shell type "import daemon" check is insall successfully
+
+
+
+
+
+put the deploy folder under /export/script on each machine
