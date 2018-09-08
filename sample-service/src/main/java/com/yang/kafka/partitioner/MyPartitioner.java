@@ -21,14 +21,14 @@ public class MyPartitioner implements Partitioner{
 			return 0;
 		
 		List<PartitionInfo>  availablePartitions = cluster.availablePartitionsForTopic(topic);
+		if(availablePartitions == null || availablePartitions.size() <= 0)
+			return 0;
+		
 		int partitionKey = Integer.parseInt((String)key);
 		
-		if(partitionKey < 10)
-			return availablePartitions.get(1).partition();
-		else if(partitionKey < 20)
-			return availablePartitions.get(1).partition();
-		else 
-			return availablePartitions.get(2).partition();
+		int partitionSize = availablePartitions.size();
+		
+		return availablePartitions.get(partitionKey % partitionSize).partition();
 	}
 
 	@Override

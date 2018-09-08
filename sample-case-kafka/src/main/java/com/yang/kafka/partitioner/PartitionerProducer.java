@@ -13,7 +13,6 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 public class PartitionerProducer {
 	
 	public static final String TOPIC_NAME = "producer-0"; 
-	
 	private  static Properties props = new Properties();
 	
 	static{
@@ -25,6 +24,7 @@ public class PartitionerProducer {
 		 props.put("buffer.memory", 33554432);
 		 props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 		 props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+		 //自定义分区器
 		 props.put("partitioner.class", "com.yang.kafka.partitioner.MyPartitioner");
 	}
 	
