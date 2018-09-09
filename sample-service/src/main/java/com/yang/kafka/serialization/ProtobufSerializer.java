@@ -7,7 +7,7 @@ import org.apache.kafka.common.serialization.Serializer;
 import com.yang.kafka.protobuf.service.Protobufable;
 
 /**
- * JDK序列化方式实现kafka消息的的序列化
+ * protobuf序列化方式实现kafka消息的的序列化
  */
 public class ProtobufSerializer implements Serializer<Protobufable>{
 	

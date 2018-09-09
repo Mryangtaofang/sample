@@ -33,7 +33,9 @@ public class User implements Serializable,Protobufable{
 	 */
 	public User(byte[] bytes) {
 		try {
+			//将字节数组转换为UserProto.User对象
 			UserProto.User user = UserProto.User.parseFrom(bytes);
+			//UserProto.User对象转化为自己的User对象
 			this.id = user.getId();
 			this.name = user.getName();
 			this.email = user.getEmail();
@@ -54,7 +56,6 @@ public class User implements Serializable,Protobufable{
 		return builder.build().toByteArray();
 	}
 	
-	
 	@Override
 	public String toString() {
 		return "[ID:" + id + ", 姓名：" + name + ", 性别：" + (sex==0?"男":"女") + ", 邮箱：" + email + "]";
@@ -73,5 +74,4 @@ public class User implements Serializable,Protobufable{
 	public Integer getSex() { return sex; }
 	public void setSex(Integer sex) { this.sex = sex; }
 	/********************** getter & setter******************************/
-
 }

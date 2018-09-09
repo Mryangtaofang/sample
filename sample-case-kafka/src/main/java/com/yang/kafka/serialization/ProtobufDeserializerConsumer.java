@@ -35,7 +35,7 @@ public class ProtobufDeserializerConsumer {
 	     while (!isClose) {
 	         ConsumerRecords<String, byte[]> records = consumer.poll(Duration.ofMillis(100));
 	         for (ConsumerRecord<String, byte[]> record : records)
-	        	 System.out.printf("key = %s, value = %s%n", record.key(), new User(record.value()));
+	        	 System.out.printf("key = %s, 字节码长度 = %s%n", record.key(), new User(record.value()));
 	     }
 	     
 	     consumer.close();
