@@ -9,7 +9,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import com.yang.kafka.User;
 
 /**
- * 生产者-使用jdk序列化
+ * 生产者-使用Protobuf序列化
  */
 public class ProtobufSerializerProducer {
 
