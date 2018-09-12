@@ -19,7 +19,8 @@ public class ProtobufSerializerProducer {
 	static{
 		 props.put("bootstrap.servers", "192.168.1.3:9092,192.168.1.128:9092,192.168.1.130:9092");
 		 props.put("acks", "all");
-		 props.put("retries", 0);
+		 props.put("retries", 3);
+		 props.put("enable.idempotence", true);
 		 props.put("batch.size", 16384);
 		 props.put("linger.ms", 1);
 		 props.put("buffer.memory", 33554432);
@@ -31,8 +32,10 @@ public class ProtobufSerializerProducer {
 		 Producer<String, User> producer = new KafkaProducer<>(props);
 		 
 		 User user = new User(101L,"kafka","serializer@kafka.com",1);
-		 producer.send(new ProducerRecord<String, User>(TOPIC_NAME, Long.toString(user.getId()), user));
-		 
+		 ProducerRecord<String, User> record = new ProducerRecord<String, User>(TOPIC_NAME, Long.toString(user.getId()), user);
+		 for(int i=0;i<3;i++){
+			 producer.send(record);
+		 }
 		 producer.close();
 	}
 }
