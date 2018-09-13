@@ -15,7 +15,7 @@ public class KafkaBuilder<T,P,C> {
 	
 	protected static final int default_buffer_size = 33554432;
 	protected static final int default_batch_size = 16384;
-	protected static final String default_group_id = "test";
+	protected static final String default_group_id = "default-group";
 	
 	public Producer<T,P> buildProducer(){
 		Properties props = new Properties();

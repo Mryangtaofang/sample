@@ -25,7 +25,7 @@ public class TransactionConsumer {
 		KafkaTransactionBuilder<String, User, byte[]> builder = new KafkaTransactionBuilder<String, User, byte[]>();
 	    Consumer<String, byte[]> consumer = builder.buildConsumer();
 	    
-	    consumer.subscribe(Arrays.asList(OnlyWriteProducer.TOPIC_NAME));
+	    consumer.subscribe(Arrays.asList(ConsumeTransformProduce.TOPIC_NAME));
 	    try{
 		    while (!isClose) {
 		        ConsumerRecords<String, byte[]> records = consumer.poll(Duration.ofMillis(100));

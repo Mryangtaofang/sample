@@ -16,17 +16,17 @@ public class OnlyWriteProducer {
 	public static final String TOPIC_NAME = "producer-0"; 
 	
 	public static void main(String[] args) {
-		 Producer<String, User> producer = new KafkaTransactionBuilder<String, User, byte[]>().buildProducer();
+		 Producer<String, User> producer = new KafkaTransactionBuilder<String, User, byte[]>().buildProducer("producer-0-transaction");
 		 //初始化事物
 		 producer.initTransactions();
 		 //开始事物
 		 producer.beginTransaction();
 		 
 		 try{
-			 User user = new User(101L,"kafka","serializer@kafka.com",1);
+			 User user = new User(105L,"kafka",null,1);
 			 producer.send(new ProducerRecord<String, User>(TOPIC_NAME, Long.toString(user.getId()), user));
 			 
-			 User user2 = new User(102L,"netty","transaction@netty.com",0);
+			 User user2 = new User(106L,"netty",null,0);
 			 producer.send(new ProducerRecord<String, User>(TOPIC_NAME, Long.toString(user2.getId()), user2));
 			 //提交事物
 			 producer.commitTransaction();

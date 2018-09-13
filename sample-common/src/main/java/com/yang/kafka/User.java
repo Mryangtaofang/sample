@@ -51,7 +51,9 @@ public class User implements Serializable,Protobufable{
 		UserProto.User.Builder builder = UserProto.User.newBuilder();
 		builder.setId(id);
 		builder.setName(name);
-		builder.setEmail(email);
+		if(email != null)
+			builder.setEmail(email);
+		
 		builder.setSex(sex);
 		return builder.build().toByteArray();
 	}

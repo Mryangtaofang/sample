@@ -12,6 +12,10 @@ public class KafkaTransactionBuilder<T,P,C> extends KafkaBuilder<T,P,C>{
 	 */
 	@Override
 	public KafkaProducer<T,P> buildProducer(){
+		return buildProducer("default-transaction");
+	}
+	
+	public KafkaProducer<T,P> buildProducer(String transactional_id){
 		Properties props = new Properties();
 	    props.put("bootstrap.servers", servers);
 	    props.put("batch.size", default_batch_size);
@@ -20,7 +24,7 @@ public class KafkaTransactionBuilder<T,P,C> extends KafkaBuilder<T,P,C>{
 		props.put("key.serializer", default_serializer);
 		props.put("value.serializer", "com.yang.kafka.serialization.ProtobufSerializer");
 		// 设置事物ID
-		props.put("transactional.id", "my-transaction");
+		props.put("transactional.id", transactional_id);
 		
 		props.put("acks", "all");
 		props.put("retries", 3);
@@ -29,14 +33,19 @@ public class KafkaTransactionBuilder<T,P,C> extends KafkaBuilder<T,P,C>{
 		return new KafkaProducer<>(props);
 	}
 	
+	
 	/**
 	 * 构建消费者
 	 */
 	@Override
 	public KafkaConsumer<T,C> buildConsumer(){
+		return buildConsumer(default_group_id);
+	}
+	
+	public KafkaConsumer<T,C> buildConsumer(String gourpId){
 		Properties props = new Properties();
 	    props.put("bootstrap.servers", servers);
-	    props.put("group.id", "test-transaction");
+	    props.put("group.id", gourpId);
 	    props.put("key.deserializer", default_deserializer);
 	    props.put("value.deserializer", "org.apache.kafka.common.serialization.ByteArrayDeserializer");
 	    
