@@ -1,4 +1,4 @@
-package com.yang.threadtest;
+package com.yang.lock;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -51,9 +51,7 @@ public class CountDownLatchTest {
 		System.out.println("我乘地铁去饭店需要1小时。");
 	}
 
-	/**
-	 * 模拟一家人到齐了
-	 */
+	/** 模拟一家人到齐了 */
 	public static void togetherToEat() {
 		System.out.println("一家人到齐了，开始吃饭");
 	}

@@ -1,4 +1,4 @@
-package com.yang.threadtest;
+package com.yang.thread;
 
 public class ThreadRunA implements Runnable{
 
