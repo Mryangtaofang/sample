@@ -4,12 +4,14 @@ package com.yang.jvm.classloader;
 
 
 /**
+ * 自定义classLoader
+ * 
  * 这里WaitLoadClass为我们需要加载的类,但是它不能放在这个工程中
  * WaitLoadClass字节码所在的文件地址为:D:/com.yang.jvm/classloader/WaitLoadClass.class
  * 
  * blog:http://www.importnew.com/24036.html
  */
-public class TestClassLoader {
+public class CustomerClassLoader {
 	
 	public static void main(String[] args) throws Exception{
 //        MyClassLoader classLoader = new MyClassLoader("D:/");
