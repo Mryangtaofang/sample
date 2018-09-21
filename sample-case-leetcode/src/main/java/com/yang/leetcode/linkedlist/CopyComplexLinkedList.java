@@ -36,12 +36,12 @@ public class CopyComplexLinkedList {
 
 	List<RandomListNode> list = new ArrayList<RandomListNode>();
 	
-    public RandomListNode Clone(RandomListNode pHead){
-    	if(pHead == null)
+    public RandomListNode Clone(RandomListNode head){
+    	if(head == null)
     		return null;
     	
     	//第一步
-    	RandomListNode currentNode = pHead;
+    	RandomListNode currentNode = head;
     	while(currentNode != null){
     		RandomListNode node =  new RandomListNode(currentNode.label);
     		node.next = currentNode.next;
@@ -49,14 +49,14 @@ public class CopyComplexLinkedList {
     		currentNode = node.next;
     	}
     	//第二步
-    	currentNode = pHead;
+    	currentNode = head;
     	while(currentNode != null){
     		if(currentNode.random != null)
     			currentNode.next.random = currentNode.random.next;
     		currentNode = currentNode.next.next;
     	}
     	//第三步
-    	currentNode = pHead;
+    	currentNode = head;
     	RandomListNode newHead = currentNode.next;
     	RandomListNode cloneCurrentNode = currentNode.next;
     	while(currentNode != null){
