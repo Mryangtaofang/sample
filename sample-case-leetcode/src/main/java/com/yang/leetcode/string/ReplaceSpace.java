@@ -1,4 +1,4 @@
-package com.yang.leetcode;
+package com.yang.leetcode.string;
 
 /**
  * 替换空格

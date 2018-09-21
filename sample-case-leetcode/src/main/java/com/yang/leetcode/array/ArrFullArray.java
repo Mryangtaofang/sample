@@ -1,4 +1,4 @@
-package com.yang.leetcode;
+package com.yang.leetcode.array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
