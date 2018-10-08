@@ -21,7 +21,6 @@ public class SubSetsII {
     
     public void track(List<List<Integer>> result,List<Integer> tmp,int[] nums,int start){
         result.add(new ArrayList<Integer>(tmp));
-        
         Integer remove = null;
         for(int i=start; i<nums.length ; i++){
             if(remove != null && remove == nums[i])
@@ -31,10 +30,5 @@ public class SubSetsII {
             remove = tmp.remove(tmp.size()-1);
         }
         
-    }
-    
-    public static void main(String args[]){
-    	char a = 'C'+('b'-'B');
-
     }
 }

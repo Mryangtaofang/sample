@@ -34,24 +34,7 @@
 			<version>${spring.version}</version>
 		</dependency>
 
-		<!-- httpclient -->
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.2.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpmime</artifactId>
-			<version>4.2.1</version>
-		</dependency>
-
 		<!-- utils -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-jexl</artifactId>
-			<version>2.1.1</version>
-		</dependency>
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
@@ -81,17 +64,6 @@
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-jaxrs</artifactId>
 			<version>${jackson.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-dbcp</groupId>
-			<artifactId>commons-dbcp</artifactId>
-			<version>1.4</version>
 		</dependency>
 		
 		<dependency>
@@ -136,85 +108,8 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<finalName>${project.artifactId}</finalName>
-
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<excludes>
-					<exclude>*.so</exclude>
-				</excludes>
-				<filtering>true</filtering>
-			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
-				<includes>
-					<include>*.so</include>
-				</includes>
-				<filtering>false</filtering>
-			</resource>
-		</resources>
-
-		<testResources>
-			<testResource>
-				<directory>src/main/resources</directory>
-				<excludes>
-					<exclude>*.so</exclude>
-				</excludes>
-				<filtering>true</filtering>
-			</testResource>
-			<testResource>
-				<directory>src/main/resources</directory>
-				<includes>
-					<include>*.so</include>
-				</includes>
-				<filtering>false</filtering>
-			</testResource>
-			<testResource>
-				<directory>src/test/resources</directory>
-				<filtering>true</filtering>
-			</testResource>
-		</testResources>
-
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>**/log4j.properties</exclude>
-						<exclude>conf/**</exclude>
-						<exclude>spring/**</exclude>
-						<exclude>rule/**</exclude>
-						<exclude>**/*.so</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<configuration>
-					<appendAssemblyId>false</appendAssemblyId>
-					<descriptors>
-						<descriptor>src/main/assemble/package.xml</descriptor>
-					</descriptors>
-				</configuration>
-				<executions>
-					<execution>
-						<id>make-assembly</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
 
 	<profiles>
-
-		
 		
 	</profiles>
 	<properties>
