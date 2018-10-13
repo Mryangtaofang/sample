@@ -17,7 +17,6 @@ public class FindNumInArray {
     public int MoreThanHalfNum_Solution(int [] array) {
     	if(array == null || array.length <= 0)
     		return 0;
-    	
     	//可能为超过半数的数
     	int candidateNum = array[0];
     	int times = 1;

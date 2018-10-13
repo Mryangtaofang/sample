@@ -17,6 +17,28 @@ public class GetPower {
 		return base * Power(base, --exponent);
 	}
 	
+    /**
+     * 这种解法明显更好
+     * 二分法，加上递归
+     */
+    public double myPow(double x, int n) {
+        if(x == 0.0)
+            return 0;
+        if(n == 0)
+            return 1;
+     
+        if(n == 1)
+            return x;
+        
+        if(n == -1)
+            return (1/x);
+        
+        int half = n%2;
+
+        return (half == 1 || half == -1) ? myPow(x*x,n/2) * myPow(x,half) : myPow(x*x,n/2);
+    }
+    
+	
 	@Test
 	public void testPower(){
 		System.out.print(Power(-2,2));

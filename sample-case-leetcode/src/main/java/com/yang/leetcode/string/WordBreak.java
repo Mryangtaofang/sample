@@ -21,7 +21,6 @@ public class WordBreak {
 	public boolean wordBreak(String inStr, Set<String> dict) {
 		if (dict == null || dict.size() == 0)
 			return false;
-
 		int len = inStr.length();
 		//表示arrays[i]，表示inStr,前i个字符，是否可以进行分词
 		boolean[] canBreak = new boolean[len + 1];
