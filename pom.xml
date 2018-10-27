@@ -29,6 +29,8 @@
 		<module>sample-case-leetcode</module>
 		<module>sample-case-netty</module>
 		<module>sample-case-kafka</module>
+		<module>sample-case-redis</module>
+		<module>sample-case-spring</module>
 	</modules>
 
 	<dependencies>
