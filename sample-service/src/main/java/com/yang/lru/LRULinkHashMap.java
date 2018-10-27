@@ -34,12 +34,7 @@ public class LRULinkHashMap<K, V> extends LinkedHashMap<K, V> {
 
 	@Override
 	public boolean containsKey(Object key) {
-		try {
-			lock.lock();
-			return super.containsKey(key);
-		} finally {
-			lock.unlock();
-		}
+		return super.containsKey(key);
 	}
 
 	@Override
