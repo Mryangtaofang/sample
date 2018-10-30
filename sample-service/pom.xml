@@ -63,6 +63,19 @@
 			<version>${jackson.version}</version>
 		</dependency>
 
+		<!-- redisson -->
+		<dependency>
+		    <groupId>org.redisson</groupId>
+		    <artifactId>redisson</artifactId>
+		    <version>3.8.0</version>
+		</dependency>
+
+		<!-- jedis -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.7.0</version>
+		</dependency>
 		<!-- groovy -->
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>

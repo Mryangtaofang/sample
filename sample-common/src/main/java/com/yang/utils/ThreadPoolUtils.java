@@ -1,4 +1,4 @@
-package com.yang.thread.pool;
+package com.yang.utils;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;

@@ -13,5 +13,6 @@ public class HelloWord {
 		RMap<String,String> rmap  = client.getMap("yang_map");
 		rmap.put("user_pin_1", "张三");
 		rmap.put("user_pin_2", "李四");
+		client.shutdown();
 	}
 }
