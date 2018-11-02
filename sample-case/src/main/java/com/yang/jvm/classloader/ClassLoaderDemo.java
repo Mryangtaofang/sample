@@ -4,7 +4,7 @@ package com.yang.jvm.classloader;
 /**
  * # 这里介绍Class.forName   和  ClassLoader.loadClass() 的区别
  * 
- * 	Class.forName 会对对象进行初始化，而ClassLoader.loadClass()不会
+ * 	Class.forName会对对象进行初始化，而ClassLoader.loadClass()不会
  *	Class.forName还有一个重载的方法，如下：
  *	Class.forName(name, initialize, loader)
  *  initialize设置为true或者是false将决定对象是否被初始化
