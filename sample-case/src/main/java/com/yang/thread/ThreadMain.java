@@ -8,6 +8,7 @@ public class ThreadMain {
 		Thread run_a = new Thread(new ThreadRunA());
 		Thread run_b = new Thread(new ThreadRunB());
 		Thread run_c = new Thread(new ThreadRunC(new ThreadTest()));
+	
 		System.out.println("主线程:线程运行开始.....");
 		sleep(1000);
 		
