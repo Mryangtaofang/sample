@@ -5,6 +5,9 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * java信号量的使用
+ */
 public class SemaphoreDemo {
 
     static class Student implements Runnable {

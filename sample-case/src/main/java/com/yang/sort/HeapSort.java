@@ -7,7 +7,8 @@ public class HeapSort implements Sortable {
 	@Override
 	public void sort(int[] arr) {
 		// 1.构建大顶堆
-		for (int i = arr.length / 2 - 1; i >= 0; i--) {
+		int mid = arr.length/2-1;
+		for (int i = mid; i >= 0; i--) {
 			// 从第一个非叶子结点从下至上，从右至左调整结构
 			adjustHeap(arr, i, arr.length);
 		}
@@ -28,12 +29,12 @@ public class HeapSort implements Sortable {
 			if (k + 1 < length && arr[k] < arr[k + 1]) {// 如果左子结点小于右子结点，k指向右子结点
 				k++;
 			}
-			if (arr[k] > temp) {// 如果子节点大于父节点，将子节点值赋给父节点（不用进行交换）
-				arr[i] = arr[k];
-				i = k;
-			} else {
+			
+			if(arr[k] <= temp)
 				break;
-			}
+			// 如果子节点大于父节点，将子节点值赋给父节点（不用进行交换）
+			arr[i] = arr[k];
+			i = k;
 		}
 		arr[i] = temp;// 将temp值放到最终的位置
 	}
@@ -47,10 +48,9 @@ public class HeapSort implements Sortable {
 		arr[b] = temp;
 	}
 	
+	
 	@Override
 	public String toString() {
 		return "HeapSort";
 	}
-	
-	
 }

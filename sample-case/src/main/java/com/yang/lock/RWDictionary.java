@@ -5,6 +5,9 @@ import java.util.TreeMap;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+/**
+ * 读写锁的使用
+ */
 public class RWDictionary {
 	private final Map<String, String> m = new TreeMap<String, String>();
 	private final ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock();

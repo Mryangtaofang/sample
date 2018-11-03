@@ -2,6 +2,10 @@ package com.yang.lock;
 
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * CountDownLatch的使用
+ * @author yangyaming
+ */
 public class CountDownLatchTest {
 	private static CountDownLatch latch = new CountDownLatch(3);
 

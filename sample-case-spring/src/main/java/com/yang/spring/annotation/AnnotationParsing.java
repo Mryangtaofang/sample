@@ -5,6 +5,9 @@ import java.lang.reflect.Method;
 
 
 /**
+ * 来看看自定义的注解
+ * http://www.importnew.com/17413.html
+ * 
  *	Java注解解析
  *		我们将使用反射技术来解析java类的注解。
  *		那么注解的RetentionPolicy应该设置为RUNTIME,
