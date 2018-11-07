@@ -10,6 +10,6 @@ public class TestSubmitJob {
 		DelayJobService service = new DelayJobService(RedissonConfig.getClient());
 		DelayJob job = new DelayJob();
 		job.setParams("this is a job");
-		service.submitJob(job, 60L, TimeUnit.SECONDS);
+		service.submitJob(job, 30L, TimeUnit.SECONDS);
 	}
 }

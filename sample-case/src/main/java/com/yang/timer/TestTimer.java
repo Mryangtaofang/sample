@@ -18,6 +18,5 @@ public class TestTimer {
 				System.out.println("11232");
 			}
 		}, 3000, 1000);
-		
 	}
 }

@@ -9,6 +9,5 @@ public class UserManagerImpl implements UserManager {
 
 	public void delUser(String id) {
 		System.out.println(".: 掉用了UserManagerImpl.delUser()方法！ ");
-
 	}
 }
