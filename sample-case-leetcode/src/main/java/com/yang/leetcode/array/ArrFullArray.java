@@ -18,6 +18,8 @@ import org.junit.Test;
  * {2,3,1}
  */
 public class ArrFullArray {
+	
+	/***************** 数组 ********************/
 	public void fullArray(int inArr[]){
 		get(inArr,0,inArr.length-1);
 	}
@@ -43,7 +45,11 @@ public class ArrFullArray {
 		inArr[i] = inArr[start];
 		inArr[start] = temp;
 	}
+	/***************** 数组 ********************/
 	
+	
+	
+	/***************** 字符串  ********************/
 	private void swap(char[] inArr, int i, int start) {
 		if(i == start || i > inArr.length)
 			return;
@@ -65,7 +71,6 @@ public class ArrFullArray {
         return result;
     }
 
-
 	private void getAllArr(char[] chasrArr, int start, int end, ArrayList<String> result) {
 		if(start >= end ){
 			result.add(String.valueOf(chasrArr));
@@ -80,7 +85,7 @@ public class ArrFullArray {
 			swap(chasrArr,start,i);
 		}
 	}
-
+	/***************** 字符串  ********************/
 
 	@Test
 	public void testFullArray(){
