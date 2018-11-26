@@ -16,7 +16,11 @@ public class StreamsCreate {
 
 		String [] strArray = new String[]{"a", "b", "c"};
 		stream = Stream.of(strArray);
-		stream.forEach(System.out::println);
+		
+		Stream.of(strArray).forEach((item) -> {
+			System.out.println(item);
+			System.out.println(item.length());
+		});
 		
 		//Arrays和collection中也有stream方法
 		stream = Arrays.stream(strArray);

@@ -74,7 +74,7 @@ public class Knapsack {
 		
 		int[] weight = new int[]{0,1,3,2,6,2};
 		int[] value = new int[]{0,2,5,3,10,4};
-		int bagWeight = 10;
+		int bagWeight = 12;
 		
 		System.out.println(new Knapsack().solution(weight, value, bagWeight));
 	}
