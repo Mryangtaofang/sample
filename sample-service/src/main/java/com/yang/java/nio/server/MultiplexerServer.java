@@ -33,7 +33,6 @@ public class MultiplexerServer extends NIOHelper implements Runnable{
 			selector = Selector.open();
 			//channel绑定选择器
 			serverChannel.register(selector, SelectionKey.OP_ACCEPT);
-			
 			System.out.println("Server started");
 		} catch (Exception e) {
 			e.printStackTrace();

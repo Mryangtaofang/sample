@@ -1,4 +1,4 @@
-package com.yang.leetcode;
+package com.yang.leetcode.matrix;
 
 import org.junit.Test;
 
@@ -7,7 +7,7 @@ import org.junit.Test;
  * 输入一个数，判断该数在二维数组中是否存在.
  *
  */
-public class SortForArray {
+public class FindNumInMatrix {
 	
 	public boolean Find(int target, int array[][]) {
 		if (array == null || array.length <= 0 || array[0].length <= 0) 
@@ -45,7 +45,7 @@ public class SortForArray {
 							 	{18 ,21 ,25 ,28 ,30 ,32 ,35 ,38 ,42 ,43 ,44 ,49 ,51 ,55 ,58 ,59 ,61,65,68,71,73,74,77,79,82,85,88,89,91,93},
 							 	{20 ,23 ,28 ,29 ,33 ,36 ,37 ,40 ,43 ,45 ,47 ,52 ,55 ,58 ,60 ,62 ,63,66,70,74,76,77,79,81,85,88,89,91,93,94}
 				 			};
-		 System.out.println(new SortForArray().Find(13,arr));
+		 System.out.println(new FindNumInMatrix().Find(13,arr));
 	}
 	
 

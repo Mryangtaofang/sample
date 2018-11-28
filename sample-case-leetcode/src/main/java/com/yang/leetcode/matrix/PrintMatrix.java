@@ -1,4 +1,4 @@
-package com.yang.leetcode;
+package com.yang.leetcode.matrix;
 
 import java.util.ArrayList;
 

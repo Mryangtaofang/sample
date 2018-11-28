@@ -2,7 +2,6 @@ package com.yang.leetcode.string;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
 import org.junit.Test;
 
@@ -61,7 +60,7 @@ public class Anagrams {
 	            n = n>>>1;
 	        }
 	        
-	        return n;
+	        return sum;
 	    }
     @Test
     public void testCase(){

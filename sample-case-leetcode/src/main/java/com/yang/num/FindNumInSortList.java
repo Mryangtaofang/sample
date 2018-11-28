@@ -1,4 +1,4 @@
-package com.yang.leetcode;
+package com.yang.num;
 
 import org.junit.Test;
 
@@ -51,7 +51,7 @@ import org.junit.Test;
  *  action: start=end，停止。                  
  * 
  */
-public class FindNum4SortList {
+public class FindNumInSortList {
 
 	public void findAllNum(int sortArr[] , int m){
 		if(sortArr == null || sortArr.length <=0)
@@ -76,7 +76,7 @@ public class FindNum4SortList {
 	@Test
 	public void testCase(){
 		int[] sortArr = new int[]{1,2,3,4,5,6,7,8,9};
-		new FindNum4SortList().findAllNum(sortArr, 9);
+		new FindNumInSortList().findAllNum(sortArr, 9);
 	}
 	
 }
