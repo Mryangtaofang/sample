@@ -1,7 +1,6 @@
 package com.yang.leetcode.stack;
 
 import java.util.Stack;
-import java.util.concurrent.locks.ReentrantLock;
 
 import org.junit.Test;
 
@@ -9,67 +8,95 @@ import org.junit.Test;
  * 实现一个栈
  */
 public class DefineStack {
-	volatile int cap = 1<<4;
-	volatile int arr[] = new int[cap];
-	volatile int topIndex = -1;
-	ReentrantLock lock = new ReentrantLock();
-	
-    public void push(int node) {
-    	lock.lock();
-    	try {
-			topIndex++;
-			if(topIndex == cap) resize();
-			arr[topIndex] = node;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally{
-			lock.unlock();
-		}
-    }
-    
-    public void pop() {
-    	try {
-    		lock.lock();
-            arr[topIndex] = 0;
-            topIndex--;
-    	} catch (Exception e) {
-    		e.printStackTrace();
-		}finally{
-			lock.unlock();
-		}
+	   static class Node{
+	        int value;
+	        Node next;
+	        Node prev;
+	        
+	        public Node(int valueIn){
+	            value = valueIn;
+	        }
+	    }
+	    
+	    volatile int cap = 1<<4;
+		Node arr[] = new Node[cap];
+		int topIndex = -1;
+	    
+	    Node head = null;
+	    
+	    /** initialize your data structure here. */
+	    public DefineStack() {
+	        
+	    }
+	    
+	    public void push(int x) {
+	        topIndex++;
+	        
+	        if(topIndex == cap) 
+	            resize();
+	        
+	        arr[topIndex] = new Node(x);
 
-    }
-    
-    public int top() {
-        return arr[topIndex];
-    }
-    
-    public int min() {
-    	try {
-    		lock.lock();
-	    	if(topIndex < 0 )
-	    		return 0;
-	    	
-	    	int min = arr[0];
-			for (int i = 1; i <= topIndex; i++) {
-				if(arr[i] < min)
-					min = arr[i];
-			}
-			return min;
-    	} catch (Exception e) {
-    		e.printStackTrace();
-    		return 0;
-		}finally{
-			lock.unlock();
-		}
-    }
-    
-    private void resize(){
-		cap = cap<<1;
-		int[] newArr = new int[cap];
-		System.arraycopy(arr, 0, newArr, 0, topIndex);
-		arr = newArr;
-    }
+	        if(head == null || head.value >= arr[topIndex].value){
+	        	arr[topIndex].next = head;
+	        	head = arr[topIndex];
+	        } else {
+	        	Node prev,cur;
+	        	prev = cur = head;
+	        	while(cur != null && cur.value < arr[topIndex].value){
+	        		if(cur != prev)
+	        			prev = prev.next;
+	        		
+	        		cur = cur.next;
+	        	}
+	        	
+	        	arr[topIndex].next = cur;
+	        	prev.next = arr[topIndex];
+	        	arr[topIndex].prev = prev;
+	        	
+	        	if(cur != null)
+	        		cur.prev = arr[topIndex];
+	        }
+	  
+	    }
+	    
+	    public void pop() {
+	        if(topIndex == -1)
+	            return;
+	        
+	        Node removeNode = arr[topIndex];
+	        
+        	if(removeNode == head){
+        		head = head.next;
+        		head.prev = null;
+        	}else{
+        		removeNode.prev.next = removeNode.next;
+        		
+        		if(removeNode.next != null)
+        		removeNode.next.prev = removeNode.prev;
+        	}
+	        
+	        arr[topIndex] = null;
+	        topIndex--;
+	    }
+	    
+	    public int top() {
+	        if(topIndex == -1)
+	            return 0;
+	        
+	        return arr[topIndex].value;
+	    }
+	    
+	    public int getMin() {
+			return (head == null) ? 0 : head.value;
+	    }
+	    
+	    private void resize(){
+			cap = cap<<1;
+			Node[] newArr = new Node[cap];
+			System.arraycopy(arr, 0, newArr, 0, topIndex);
+			arr = newArr;
+	    }
     
     /**
      * 输入两个整数序列，第一个序列表示栈的压入顺序，
@@ -100,11 +127,11 @@ public class DefineStack {
     @Test
     public void testStack(){
     	DefineStack stack = new DefineStack();
-    	stack.push(12);
-    	stack.push(3);
-    	stack.push(1);
-    	stack.push(8);
-    	stack.push(10);
+    	stack.push(-2);
+    	stack.push(0);
+    	stack.push(-3);
+    	stack.getMin();
     	stack.pop();
+    	stack.top();
     }
 }

@@ -47,6 +47,12 @@ public class StreamsCase {
 		phpProgrammers.forEach((p) -> System.out.printf("%s %s; ", p.getFirstName(), p.getLastName()));  
 		
 		
+//		if(CollectionUtils.isEmpty(phpProgrammers));
+		
+		StringBuffer sb = new StringBuffer();
+		phpProgrammers.forEach(p->{
+			sb.append(p.getLastName());
+		});
 		System.out.println("给程序员加薪 5% :");  
 		//查看源码就知道，javaProgrammers.forEach中，
 		//forEach是jdk1.8在Iterable中新增的一个方法

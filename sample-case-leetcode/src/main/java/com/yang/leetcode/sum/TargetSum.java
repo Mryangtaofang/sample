@@ -51,6 +51,7 @@ public class TargetSum {
 		for (int n : nums)
 			for (int i = s; i >= n; i--)
 				dp[i] += dp[i - n];
+		
 		return dp[s];
 	}
 	

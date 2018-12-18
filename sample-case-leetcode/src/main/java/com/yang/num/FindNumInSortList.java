@@ -62,7 +62,6 @@ public class FindNumInSortList {
 		
 		while(end > start){
 			if(sortArr[end] + sortArr[start] == m){
-				System.out.println("[" + sortArr[start] + "," + sortArr[end] + "]");
 				start++;
 				end--;
 			}else if(sortArr[end] + sortArr[start] > m){
